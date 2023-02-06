@@ -1,0 +1,53 @@
+:root {
+  --palReg: Palatino;
+  --pal: Palatino, serif;
+  --primCol: #2B2E32;
+  --backCol: #EFF2F5;
+  --labCol: #FFFFFF;
+}
+
+body {
+  background-color: var(--backCol);
+  font-family: Palatino, "Palatino Linotype", "URW Palladio L", serif;
+  line-height: 1.2rem;
+  font-size: 100%;
+  justify-items: center;
+  text-align: center;
+}
+
+img {
+  display: block;
+}
+
+legend {
+  display: none;
+}
+
+.container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 0.5em 1em;
+}
+
+.search-submit, .dropbtn {
+  background-color: var(--primCol);
+  color: var(--backCol);
+  font-family: var(--palReg);
+  font-size: 1em;
+  border: 0;
+  padding: 0 2em 0 2em;
+}
+
+.search-submit:hover, .dropbtn:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.search-submit:active {
+  transform: scale(0.95);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

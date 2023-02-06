@@ -1,0 +1,16 @@
+.quantity{
+    display: grid;
+    /* justify-content: center;
+    align-content: center; */
+    grid-template-columns: auto auto auto;
+}
+
+.btn{
+    color: var(--labCol);
+    background-color: var(--primCol);
+}
+
+.form-control, .btn{
+    border-radius: 8px;
+    text-align: center;
+}
