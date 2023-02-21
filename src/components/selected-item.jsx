@@ -1,10 +1,15 @@
 import './selected-item.css';
 import QuantitySection from './quantitySection';
 import { useParams } from 'react-router-dom';
- 
+import { useSelector } from 'react-redux';
+import { increment, decrement } from '../features/counter/counterSlice'; 
+import { useDispatch } from 'react-redux';
+
 function SelectedItem ({product}) {
 
   const {id} = useParams();
+  const dispatch = useDispatch();
+  const count = useSelector((state) => state.counter.count);
 
     return (
 
@@ -25,7 +30,7 @@ function SelectedItem ({product}) {
 
 
 
-      <form className="museum-label label-like" id="config-form">
+      <div className="museum-label label-like" id="config-form">
 
         <fieldset className="museum-fieldset summary-fieldset">
 
@@ -37,13 +42,13 @@ function SelectedItem ({product}) {
               <div className="form-text-row">
                             <QuantitySection></QuantitySection>
                             <label>Total Price:€{product[id-1].price.toFixed(2)}</label> 
-                          </div>
-                          <button type="submit" className="dropbtn" id="config-submit-button">Add to Cart</button>
+              </div>
+              <button className="dropbtn" id="config-submit-button" onClick={() => dispatch(increment())}>Add to Cart</button>
 
         </fieldset>
-
-      </form>
-
+    
+      </div>
+      
     </section>
     
     );
