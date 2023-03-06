@@ -3,9 +3,9 @@ import DropDown from './dropDown';
 import { Link, Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-function Header () {
+function Header  ()  {
 
-    const counter = useSelector((state)=> state.counter);
+    const counter = useSelector((state : any )=> state.counter);
 
     return(
         
