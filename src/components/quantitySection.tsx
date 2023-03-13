@@ -1,4 +1,5 @@
 import './quantitySection.css';
+import React, { useState, useEffect } from 'react';
 
 function quantitySection  () {
 

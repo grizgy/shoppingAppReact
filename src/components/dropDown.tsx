@@ -1,6 +1,6 @@
 import './dropDown.css';
 
-const products = ["Men's clothing", "Women's clothing", "Jewelery", "Electronics", "All categories"] 
+const categories = ["Men's clothing", "Women's clothing", "Jewelery", "Electronics", "All categories"] 
 
 function dropDown ()  {
 
@@ -8,7 +8,7 @@ function dropDown ()  {
       <div className="dropdown">
       <button className="dropbtn" >Categories</button>
       <div className="dropdown-content">
-          {products.map((product) =><button>{product}</button>)}
+          {categories.map((category) =><button key={category} >{category}</button>)}
       </div>
     </div>
     );

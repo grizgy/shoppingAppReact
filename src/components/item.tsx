@@ -11,7 +11,7 @@ function Item ({ products} : { products : string[]})  {
         <SearchForm></SearchForm>
        
         <div className='container'>{products.map((product : any) => 
-          <Link to={`/product/${product.id}`} className="search-item">
+          <Link key={product.id} to={`/product/${product.id}`} className="search-item">
                 <img className="search-item-img" src={product.image} alt="Selected product"></img>
                 <div className="search-item-label">
                   <span className="search-item-title">{product.title}</span>
