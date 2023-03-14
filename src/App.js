@@ -9,7 +9,6 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 function App() {
 
   let database  = db.products;
-  console.log(database[0])
 
   return (
 

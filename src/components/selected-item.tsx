@@ -1,7 +1,7 @@
 import './selected-item.css';
 import QuantitySection from './quantitySection';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { increment, decrement } from '../features/counter/counterSlice'; 
 import { useDispatch } from 'react-redux';
 
@@ -10,7 +10,7 @@ function SelectedItem  ( {product} : {product: any} ) {
 
   const {id} = useParams();
   const dispatch = useDispatch();
-  const count = useSelector((state:any) => state.counter.count);
+  // const count = useSelector((state:any) => state.counter.count);
   const productID = Number(id);
   console.log(productID);
 
