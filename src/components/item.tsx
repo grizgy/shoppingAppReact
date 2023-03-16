@@ -5,6 +5,7 @@ import SearchForm from './searchForm';
 function Item ({ products} : { products : string[]})  {
 
 
+  console.log(products[0])
       return      (
         <div>
           
