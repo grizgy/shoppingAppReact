@@ -10,12 +10,10 @@ function App() {
 
   let database  = db.products;
 
-  console.log(db.products[0].id + '====================');
   return (
 
     <Router>
  
-
     <div className="App">
 
       <div><Header/></div>  
