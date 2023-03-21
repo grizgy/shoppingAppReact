@@ -1,14 +1,21 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 import { Product } from "../../components/product";
 
-const initialState = {
-    // count: 0, 
-    products: require ("../../db.json")
+
+interface CounterState {
+    count: number,
+    products : any,
+    elementsInCart : Product []
+  }
+
+const initialState : CounterState = {
+    count: 0, 
+    products: require ("../../db.json"),
+    elementsInCart : []
 }
 
-
-const  pipipi = require("../../db.json");
-console.log(pipipi.products[0].title);
+// const  pipipi = require("../../db.json");
+// console.log(pipipi.products[0].title);
 
 const  counterSlice = createSlice (
 
@@ -39,6 +46,16 @@ const  counterSlice = createSlice (
             
                 });
 
+            }, 
+
+            addElement : (state, action) => {
+                if ( current(state.elementsInCart).includes(current(state.products.products[action.payload-1]))) {
+                    console.log(current(state.elementsInCart));
+                } else {
+                    state.elementsInCart = [...state.elementsInCart, state.products.products[action.payload-1] ];
+                    state.count +=1;
+                }
+
             }
         }
     }
@@ -46,5 +63,5 @@ const  counterSlice = createSlice (
 );
 
 
-export const { increment, decrement} = counterSlice.actions;
+export const { increment, decrement, addElement} = counterSlice.actions;
 export default counterSlice.reducer;

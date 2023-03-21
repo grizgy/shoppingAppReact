@@ -5,8 +5,6 @@ import { Product } from './product';
 
 function Item ({ products} : { products : Product[]})  {
 
-
-  // console.log(products[0])
       return      (
         <div>
           

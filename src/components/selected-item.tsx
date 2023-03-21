@@ -1,16 +1,14 @@
 import './selected-item.css';
 import QuantitySection from './quantitySection';
 import { useParams } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
-// import { increment, decrement, changeTitle } from '../features/counter/counterSlice'; 
-// import { useDispatch } from 'react-redux';
+import { addElement } from '../features/counter/counterSlice'; 
+import { useDispatch } from 'react-redux';
 
 
 function SelectedItem  ( {product} : {product: any} ) {
 
   const {id} = useParams();
-  // const dispatch = useDispatch();
-  // const count = useSelector((state:any) => state.counter.count);
+  const dispatch = useDispatch();
   const productID = Number(id);
   console.log(productID);
 
@@ -45,7 +43,7 @@ function SelectedItem  ( {product} : {product: any} ) {
                           <QuantitySection id = {productID-1} ></QuantitySection>
                           <label>Total Price:€{product[productID-1].price.toFixed(2)}</label> 
             </div>
-            <button className="dropbtn" id="config-submit-button">Add to Cart</button>
+            <button className="dropbtn" id="config-submit-button" onClick={() => dispatch(addElement(id))}>Add to Cart</button>
 
       </fieldset>
   

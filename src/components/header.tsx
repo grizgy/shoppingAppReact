@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 function Header  ()  {
 
-    const counter = useSelector((state : any )=> state.counter);
+    const totalCount = useSelector((state : any )=> state.counter);
 
     return(
         
@@ -17,7 +17,7 @@ function Header  ()  {
         </div>
         <div className="header-right">
         <DropDown/>
-        <Link to={'/cart'} className="header-links">Cart({counter.count})</Link>
+        <Link to={'/cart'} className="header-links">Cart({totalCount.count})</Link>
         </div>
         </header>
 
