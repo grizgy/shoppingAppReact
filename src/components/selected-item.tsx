@@ -10,7 +10,7 @@ function SelectedItem  ( {product} : {product: any} ) {
   const {id} = useParams();
   const dispatch = useDispatch();
   const productID = Number(id);
-  console.log(productID);
+  // console.log(productID);
 
     return (
 

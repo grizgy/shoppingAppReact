@@ -49,12 +49,35 @@ const  counterSlice = createSlice (
             }, 
 
             addElement : (state, action) => {
-                if ( current(state.elementsInCart).includes(current(state.products.products[action.payload-1]))) {
-                    console.log(current(state.elementsInCart));
-                } else {
+
+                if(typeof current(state.elementsInCart).find(element => element.id == action.payload) === 'undefined') { 
+
                     state.elementsInCart = [...state.elementsInCart, state.products.products[action.payload-1] ];
                     state.count +=1;
+
+                } else {
+
+                    current(state.elementsInCart).filter((item) => {
+
+                        if (item.id !== state.products.products[action.payload-1].id) {
+                            return item;
+                        } else {
+
+                            if (item.quantity !== state.products.products[action.payload-1].quantity) {
+
+                                const index = state.elementsInCart.indexOf(item);
+                                state.elementsInCart.splice(index, 1, state.products.products[action.payload-1]);
+
+                            }
+                            
+                        }
+                    }
+
+                );
+
                 }
+
+                // console.log((state.elementsInCart))
 
             }
         }
