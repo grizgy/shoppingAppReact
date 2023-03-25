@@ -1,17 +1,20 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 import { Product } from "../../components/product";
+import React, { useState } from 'react';
 
 
 interface CounterState {
     count: number,
     products : any,
-    elementsInCart : Product []
+    elementsInCart : Product [],
+    total : number
   }
 
 const initialState : CounterState = {
     count: 0, 
     products: require ("../../db.json"),
-    elementsInCart : []
+    elementsInCart : [],
+    total : 0
 }
 
 // const  pipipi = require("../../db.json");
@@ -50,10 +53,11 @@ const  counterSlice = createSlice (
 
             addElement : (state, action) => {
 
-                if(typeof current(state.elementsInCart).find(element => element.id == action.payload) === 'undefined') { 
+                if(typeof current(state.elementsInCart).find(element => element.id == action.payload) == 'undefined') { 
 
                     state.elementsInCart = [...state.elementsInCart, state.products.products[action.payload-1] ];
                     state.count +=1;
+                    state.total += (state.products.products[action.payload-1].quantity * state.products.products[action.payload-1].price)
 
                 } else {
 
@@ -66,7 +70,18 @@ const  counterSlice = createSlice (
                             if (item.quantity !== state.products.products[action.payload-1].quantity) {
 
                                 const index = state.elementsInCart.indexOf(item);
-                                state.elementsInCart.splice(index, 1, state.products.products[action.payload-1]);
+
+                               
+
+                                // remove previous element total
+                                state.total -= (item.quantity * state.products.products[action.payload-1].price)
+
+                                // add new  element total
+                                state.total += (state.products.products[action.payload-1].quantity * state.products.products[action.payload-1].price)
+
+
+                                 //to be checked !!! 
+                                state.elementsInCart.splice(index, action.payload, state.products.products[action.payload-1]);
 
                             }
                             
@@ -77,8 +92,16 @@ const  counterSlice = createSlice (
 
                 }
 
-                // console.log((state.elementsInCart))
+                //console.log(current(state.elementsInCart))
 
+            }, 
+             removeElement (state, action) {
+
+                const index = current(state.elementsInCart).indexOf(current(state.products.products[action.payload-1]));
+                state.elementsInCart.splice(index, 1);
+                state.count -=1;
+                console.log(current(state.elementsInCart))
+                
             }
         }
     }
@@ -86,5 +109,5 @@ const  counterSlice = createSlice (
 );
 
 
-export const { increment, decrement, addElement} = counterSlice.actions;
+export const { increment, decrement, addElement, removeElement} = counterSlice.actions;
 export default counterSlice.reducer;

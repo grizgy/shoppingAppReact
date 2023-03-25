@@ -3,9 +3,10 @@ import QuantitySection from './quantitySection';
 import { useParams } from 'react-router-dom';
 import { addElement } from '../features/counter/counterSlice'; 
 import { useDispatch } from 'react-redux';
+import { Product } from './product'; 
 
 
-function SelectedItem  ( {product} : {product: any} ) {
+function SelectedItem  ( {product} : {product: Product[]} ) {
 
   const {id} = useParams();
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ function SelectedItem  ( {product} : {product: any} ) {
             </div>
             <div className="form-text-row">
                           <QuantitySection id = {productID-1} ></QuantitySection>
-                          <label>Total Price:€{product[productID-1].price.toFixed(2)}</label> 
+                          <label>Total Price:€{(product[productID-1].quantity*product[productID-1].price).toFixed(2)}</label> 
             </div>
             <button className="dropbtn" id="config-submit-button" onClick={() => dispatch(addElement(id))}>Add to Cart</button>
 
