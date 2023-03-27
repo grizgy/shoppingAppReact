@@ -28,12 +28,26 @@ const  counterSlice = createSlice (
         reducers : {
             increment : (state, action) => {
 
+                // state.elementsInCart.includes(element => element.id < 2)
+
                 state.products.products.filter((product:Product) => {
 
                     if ((product.id - 1) == action.payload) {
                         product.quantity +=1;
+
+                        // check if the element is already in the cart and if so increment the total price 
+                        const index = state.elementsInCart.findIndex(element => element.id === product.id);
+                        // console.log(product.id)
+                        // console.log(index)
+                        // console.log(state.elementsInCart[index])
+
+                        if(typeof state.elementsInCart[index].id !== 'undefined' && state.elementsInCart[index].id == product.id) {
+                            state.total += product.price
+                            console.log(state.total)
+                        }
                     }
             
+                   
                 });
 
             }, 
@@ -44,6 +58,17 @@ const  counterSlice = createSlice (
                     if(state.products.products[action.payload].quantity >= 2) {
                     if ((product.id - 1) == action.payload) {
                         product.quantity -=1;
+
+
+                        // check if the element is already in the cart and if so increment the total price 
+                        const index = state.elementsInCart.findIndex(element => element.id = product.id);
+                        // console.log(product.id)
+                        // console.log(index)
+                        // console.log(state.elementsInCart[index])
+
+                        if(state.elementsInCart[index].id == product.id) {
+                            state.total -= product.price
+                        }
                     }
                 }
             
@@ -99,8 +124,9 @@ const  counterSlice = createSlice (
 
                 const index = current(state.elementsInCart).indexOf(current(state.products.products[action.payload-1]));
                 state.elementsInCart.splice(index, 1);
-                state.count -=1;
-                console.log(current(state.elementsInCart))
+                state.count-=1 ;
+                state.total -= (state.products.products[action.payload-1].quantity * state.products.products[action.payload-1].price)
+                // console.log(current(state.elementsInCart))
                 
             }
         }

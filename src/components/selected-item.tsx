@@ -2,16 +2,15 @@ import './selected-item.css';
 import QuantitySection from './quantitySection';
 import { useParams } from 'react-router-dom';
 import { addElement } from '../features/counter/counterSlice'; 
-import { useDispatch } from 'react-redux';
-import { Product } from './product'; 
+import { useSelector, useDispatch } from 'react-redux';
 
 
-function SelectedItem  ( {product} : {product: Product[]} ) {
+function SelectedItem  () {
 
   const {id} = useParams();
   const dispatch = useDispatch();
   const productID = Number(id);
-  // console.log(productID);
+  const product = useSelector((state : any )=> state.counter.products);
 
     return (
 
@@ -19,12 +18,12 @@ function SelectedItem  ( {product} : {product: Product[]} ) {
 
       <div className="preview">
       <div className="sample-wrapper">
-        <img src={product[productID-1].image} alt='preview' id="preview-image" className="sample-frame"></img>
+        <img src={product.products[productID-1].image} alt='preview' id="preview-image" className="sample-frame"></img>
       </div>
       <div className="sample-info label-like">
         <label>
-          <strong>{product[productID-1].title}</strong><br></br>
-          <i>{product[productID-1].description}</i>
+          <strong>{product.products[productID-1].title}</strong><br></br>
+          <i>{product.products[productID-1].description}</i>
           </label>
       </div>
     </div>
@@ -38,11 +37,11 @@ function SelectedItem  ( {product} : {product: Product[]} ) {
           <legend>Summary and Submit</legend>
             <div className="form-text-row">
               <label>Price (excl. shipping)</label>
-              <label className="sum">€{product[productID-1].price.toFixed(2)}</label>
+              <label className="sum">€{product.products[productID-1].price.toFixed(2)}</label>
             </div>
             <div className="form-text-row">
                           <QuantitySection id = {productID-1} ></QuantitySection>
-                          <label>Total Price:€{(product[productID-1].quantity*product[productID-1].price).toFixed(2)}</label> 
+                          <label>Total Price:€{(product.products[productID-1].quantity*product.products[productID-1].price).toFixed(2)}</label> 
             </div>
             <button className="dropbtn" id="config-submit-button" onClick={() => dispatch(addElement(id))}>Add to Cart</button>
 

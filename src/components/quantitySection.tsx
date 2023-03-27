@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 function QuantitySection  ({id} : {id:number}) {
 
 
-    const products = useSelector((state : any )=> state.counter);
+    const products = useSelector((state : any )=> state.counter.products);
     const dispatch = useDispatch();
 
     return  (
@@ -21,7 +21,7 @@ function QuantitySection  ({id} : {id:number}) {
         </div>
 
         <div className="form-check-inline">
-            <div className="form-control"/>{products.products.products[id].quantity}
+            <div className="form-control"/>{products.products[id].quantity}
 
         </div>
 

@@ -2,15 +2,18 @@ import './item.css';
 import { Link} from "react-router-dom";
 import SearchForm from './searchForm';
 import { Product } from './product';  
+import { useSelector } from 'react-redux';
 
-function Item ({ products} : { products : Product[]})  {
-
+function Item ()  {
+  
+      const product = useSelector((state : any )=> state.counter.products);
+      
       return      (
         <div>
           
         <SearchForm></SearchForm>
        
-        <div className='container'>{products.map((product:Product) => 
+        <div className='container'>{product.products.map((product:Product) => 
           <Link key={product.id} to={`/product/${product.id}`} className="search-item">
                 <img className="search-item-img" src={product.image} alt="Selected product"></img>
                 <div className="search-item-label">

@@ -20,8 +20,8 @@ function App() {
       <div><Header/></div>  
 
       <Routes>
-        <Route path="/" element={<Item products={database}></Item>}></Route>
-        <Route path="product/:id" element={<SelectedItem product={database}></SelectedItem>}></Route>
+        <Route path="/" element={<Item></Item>}></Route>
+        <Route path="product/:id" element={<SelectedItem></SelectedItem>}></Route>
         <Route path="/cart" element={<Cart></Cart>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>

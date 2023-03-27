@@ -8,7 +8,6 @@ import { removeElement} from '../features/counter/counterSlice';
 
 function CartItem ()  {
 
-    // let total : number = 1;
     const cartProducts = useSelector((state : any )=> state.counter.elementsInCart);
     const dispatch = useDispatch();
 
@@ -29,7 +28,7 @@ function CartItem ()  {
                   <span className="cart-desc-name">Size: {product.size}</span>
                   <span className="cart-desc-text">Color: {product.color}</span>
                 </div>
-                <QuantitySection id={product.quantity}></QuantitySection>
+                <QuantitySection id={product.id-1}></QuantitySection>
                 <span className="cart-desc-price"> {product.quantity} X &euro; {product.price.toFixed(2)} equals {(product.quantity*product.price).toFixed(2)}</span>
             </label>
             </div>)}
