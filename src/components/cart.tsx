@@ -16,7 +16,6 @@ function Cart ()  {
        <button className="cart-checkout-button" type="button" >Checkout</button>
      </div>
      
-
     </div>
     
     // <div>
