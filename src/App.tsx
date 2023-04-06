@@ -4,12 +4,13 @@ import Item from "./components/item";
 import SelectedItem from "./components/selected-item";
 import Cart from "./components/cart";
 import NotFound from "./components/notFound";
-import db from "./db.json";
+// import db from "./db.json";
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 function App() {
 
-  let database  = db.products;
+  // const db = require("./db.json");
+  // let database  = db.products;
 
   return (
 
