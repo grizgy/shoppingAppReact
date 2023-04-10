@@ -1,4 +1,3 @@
-import './login.css';
 import {Box, Card, Typography, FormControl, CardActions, Button, FormLabel, TextField, CardContent, Stack} from "@mui/material" 
 import { Link} from "react-router-dom";
 
@@ -17,33 +16,28 @@ function Login ()  {
 
             <Typography>SIGN IN</Typography>
 
-        <Stack spacing={2} direction='column'alignItems={'center'}>
-            <FormControl>
-                <CardContent>
+        <Stack direction='column'alignItems={'center'}>
+           
                     <CardActions>
-                    <Stack spacing={2} direction='column'>
+                    <Stack direction='column'>
                         {/* <FormLabel>Account email</FormLabel> */}
                         <TextField label="Account email" required type={'email'} variant="standard"></TextField>
                     </Stack>
                     </CardActions>
-                </CardContent>
-            </FormControl>
+              
 
-            <FormControl>
-                <CardContent>
+            
                     <CardActions>
-                    <Stack spacing={2} direction='column'>
+                    <Stack direction='column'>
                         {/* <FormLabel>Password</FormLabel> */}
                         <TextField label="Password" required type={'password'} variant="standard"></TextField>
                     </Stack>    
                     </CardActions>
-                </CardContent>
-            </FormControl>
 
            
             <CardActions>
             <Button variant='contained' size='large'>Login</Button>
-            Don't have an account?<Link to={`/register`} className="search-item"><Button size='small'>Sign Up</Button></Link>
+            <div>Don't have an account?<Link to={`/register`} className="search-item"><Button size='small'>Sign Up</Button></Link></div>
             
             </CardActions>
          
