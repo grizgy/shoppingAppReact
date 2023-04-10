@@ -17,6 +17,8 @@ function Cart ()  {
      </div>
      
     </div>
+
+    // {!showComponent? <Timer/> : <CountDown/>}
     
     // <div>
     //       <div className="cart-checkout">
