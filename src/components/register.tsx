@@ -1,4 +1,4 @@
-import {Box, Card, Typography, FormControl, CardActions, Button, FormLabel, TextField, CardContent, Stack} from "@mui/material" 
+import {Box, Card, Typography, CardActions, Button, TextField, Stack} from "@mui/material" 
 import { Link} from "react-router-dom";
 
 
@@ -10,7 +10,7 @@ function Register ()  {
         justifyContent="center"
         alignItems="center"
         minHeight="80vh">
-        <Card >
+        <Card>
             <Typography>Register</Typography>
 
             <Stack spacing={2} direction='column'alignItems={'center'}>

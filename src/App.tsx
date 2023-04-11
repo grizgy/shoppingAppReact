@@ -8,6 +8,7 @@ import Login from "./components/login";
 // import db from "./db.json";
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Register from "./components/register";
+import Checkout from "./components/checkout";
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
         <Route path="/" element={<Item></Item>}></Route>
         <Route path="product/:id" element={<SelectedItem></SelectedItem>}></Route>
         <Route path="/cart" element={<Cart></Cart>}></Route>
+        <Route path="/checkout" element={<Checkout></Checkout>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
 
