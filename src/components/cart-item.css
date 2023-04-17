@@ -70,8 +70,8 @@
   .cart-item {
     display: grid;
     justify-content: center;
-    grid-template-columns: 250px 2rem auto;
-    grid-template-rows: 250px;
+    /* grid-template-columns: 250px 2rem auto; */
+    grid-template-columns: 250px;
     grid-template-areas: 'image gap desc';
     margin-bottom: 4.4rem
   }

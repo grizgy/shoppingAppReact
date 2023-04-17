@@ -25,27 +25,29 @@ function Checkout () {
         <div className="form-group-1"> 
         <div className="big">Contact information</div>
             <div className="inside">
-                <TextField type="text" label="Email" required> </TextField>
+                <TextField type="text" label="Email" required variant="standard"> </TextField>
             </div>
         </div>
         {/* <!-- <p>Shipping address</p> --> */}
         <div className="form-group-2">
         <div className="big">Shipping address</div>
-        <Stack direction='column'>
+
         <div className="inside" >
-            <TextField type="text" label="Name" required></TextField>
-            <TextField type="text" label="Address" required></TextField>
-            <TextField type="text" label="City"required></TextField>
+        <Stack spacing={2} direction='column'>
+            <TextField type="text" label="Name" required variant="standard"></TextField>
+            <TextField type="text" label="Address" required variant="standard"></TextField>
+            <TextField type="text" label="City"required variant="standard"></TextField>
             <select id="country" name="country" required>
                 <option value="australia">Austria</option>
                 <option value="canada">Germany</option>
                 <option value="usa">Switzerland</option>
             </select>
-            <TextField type="text" label="Postal code" required></TextField>
-            <TextField type="text" label="Phone (optional)"></TextField> 
-        </div>
+            <TextField type="text" label="Postal code" required variant="standard"></TextField>
+            <TextField type="text" label="Phone (optional)" variant="standard"></TextField> 
         </Stack>
         </div>
+        </div>
+
         {/* <!-- <p>Card details</p> --> */}
         {/* <div className="form-group-3">
         <div className="big">Card details</div>
@@ -68,8 +70,10 @@ function Checkout () {
             </div>
         </div> */}
         <div className="butt">
-                    <div id="back"><Link to={'/cart'}>⟻Back to cart</Link></div>
-                    <Link to={'/login'}><div id="pay"><button type="submit">Pay</button></div></Link>
+        <Stack spacing={20} direction='row'>
+                    <Link to={'/cart'}><Button>⟻Back to cart</Button></Link>
+                    <Link to={'/login'}><Button variant='contained' size='large' type="submit">Pay</Button></Link>
+        </Stack>
         </div>
 
         </Stack>

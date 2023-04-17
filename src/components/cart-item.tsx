@@ -9,12 +9,13 @@ import { removeElement} from '../features/counter/counterSlice';
 function CartItem ()  {
 
     const cartProducts = useSelector((state : any )=> state.counter.elementsInCart);
+    const allProducts = useSelector((state : any )=> state.counter.products);
     const dispatch = useDispatch();
 
     return (
       
-        <div id="cartItem" className="cart-item" > { cartProducts.map((product:Product) =>  
-          <div key={product.id}>
+        <div> { cartProducts.map((product:Product) =>  
+          <div key={product.id} id="cartItem" className="cart-item">
         <div id="cartPic" className="cart-preview">
           <a>
             <img className="cart-thumb sample-frame-1" src={product.image} width="199" height="249" alt="image of the product"></img>
@@ -29,7 +30,7 @@ function CartItem ()  {
                   <span className="cart-desc-text">Color: {product.color}</span>
                 </div>
                 <QuantitySection id={product.id-1}></QuantitySection>
-                <span className="cart-desc-price"> {product.quantity} X &euro; {product.price.toFixed(2)} equals {(product.quantity*product.price).toFixed(2)}</span>
+                <span className="cart-desc-price"> {allProducts.products[product.id-1].quantity} X &euro; {product.price.toFixed(2)} equals {(allProducts.products[product.id-1].quantity*product.price).toFixed(2)}</span>
             </label>
             </div>)}
       </div>
