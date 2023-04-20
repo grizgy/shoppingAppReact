@@ -2,6 +2,8 @@ import './header.css';
 import DropDown from './dropDown';
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Badge from '@mui/material/Badge';
 
 function Header  ()  {
 
@@ -17,7 +19,11 @@ function Header  ()  {
         </div>
         <div className="header-right">
         <DropDown/>
-        <Link to={'/cart'} className="header-links">Cart({totalCount.count})</Link>
+
+        <Link to={'/cart'} className="header-links">Cart <Badge color="secondary" badgeContent={totalCount.count}>
+          <ShoppingCartIcon sx={{ fontSize: "2.2rem" }}/>
+        </Badge></Link>
+
         </div>
         </header>
 

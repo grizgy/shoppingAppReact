@@ -161,8 +161,8 @@
       height: 2.6em;
       padding-left: 2em;
       padding-right: 2em;
-      background: var(--primCol);
-      color: var(--labCol);
+      /* background: var(--primCol);
+      color: var(--labCol); */
       width: 100%;
       margin-top: 1rem;
       font-family: var(--palReg);

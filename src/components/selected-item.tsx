@@ -3,6 +3,7 @@ import QuantitySection from './quantitySection';
 import { useParams } from 'react-router-dom';
 import { addElement } from '../features/counter/counterSlice'; 
 import { useSelector, useDispatch } from 'react-redux';
+import { Button } from '@mui/material';
 
 
 function SelectedItem  () {
@@ -43,7 +44,7 @@ function SelectedItem  () {
                           <QuantitySection id = {productID-1} ></QuantitySection>
                           <label>Total Price:€{(product.products[productID-1].quantity*product.products[productID-1].price).toFixed(2)}</label> 
             </div>
-            <button className="dropbtn" id="config-submit-button" onClick={() => dispatch(addElement(id))}>Add to Cart</button>
+            <Button  variant="contained" color='primary' className="dropbtn" id="config-submit-button" onClick={() => dispatch(addElement(id))}>Add to Cart</Button>
 
       </fieldset>
   

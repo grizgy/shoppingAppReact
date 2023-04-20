@@ -2,9 +2,9 @@ import './cart-item.css';
 import { Product } from './product'; 
 import QuantitySection from './quantitySection';
 import { useSelector, useDispatch } from "react-redux";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faTimes} from '@fortawesome/free-solid-svg-icons'
 import { removeElement} from '../features/counter/counterSlice'; 
+import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
 
 function CartItem ()  {
 
@@ -22,7 +22,7 @@ function CartItem ()  {
           </a>
         </div>
             <label className="cart-desc">
-                <button className="cart-desc-button" type="button"><FontAwesomeIcon icon={faTimes} onClick={() => dispatch(removeElement(product.id))}></FontAwesomeIcon></button>
+                <CancelRoundedIcon className="cart-desc-button" type="button" onClick={() => dispatch(removeElement(product.id))} ></CancelRoundedIcon>
                 <span className="cart-desc-name">{product.title}</span>
                 <span className="cart-desc-text">{product.description}</span>
                 <div className="properties">

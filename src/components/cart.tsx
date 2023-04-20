@@ -2,6 +2,7 @@ import './cart.css';
 import { useSelector } from "react-redux";
 import CartItem from './cart-item';
 import { Link } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 function Cart ()  {
 
@@ -14,7 +15,7 @@ function Cart ()  {
      <CartItem></CartItem>
      <div className="cart-checkout"> 
        <div className="cart-total-price">Total: &euro; {cartProducts.total.toFixed(2)} </div>
-       <Link to={'/checkout'}><button className="cart-checkout-button" type="button">Checkout</button></Link>
+       <Link to={'/checkout'}><Button variant="contained" color='primary' className="cart-checkout-button" type="button">Checkout</Button></Link>
      </div>
      
     </div>

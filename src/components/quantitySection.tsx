@@ -1,7 +1,11 @@
 import './quantitySection.css';
 // import React, { useState, useEffect } from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faMinus, faPlus} from '@fortawesome/free-solid-svg-icons'
+// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+// import {faMinus, faPlus} from '@fortawesome/free-solid-svg-icons'
+
+import { Button } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 import { increment, decrement} from '../features/counter/counterSlice'; 
 import { useSelector, useDispatch } from "react-redux";
@@ -17,7 +21,13 @@ function QuantitySection  ({id} : {id:number}) {
         <div className="quantity">
 
         <div className="form-check-inline">
-            <button className="btn"><FontAwesomeIcon icon={faMinus} onClick={() => dispatch(decrement(id))}></FontAwesomeIcon></button>
+
+        <Button className="btn"
+            variant="contained"
+            aria-label="decrease"
+            onClick={() => dispatch(decrement(id))}>
+            <RemoveIcon fontSize="small" />
+          </Button>
         </div>
 
         <div className="form-check-inline">
@@ -26,7 +36,13 @@ function QuantitySection  ({id} : {id:number}) {
         </div>
 
         <div className="form-check-inline">
-            <button className="btn"><FontAwesomeIcon icon={faPlus} onClick={() => dispatch(increment(id))}></FontAwesomeIcon></button>
+
+        <Button className="btn"
+            variant="contained"
+            aria-label="increase"
+            onClick={() => dispatch(increment(id))}>
+            <AddIcon fontSize="small" />
+          </Button>
         </div>
 
         </div>
