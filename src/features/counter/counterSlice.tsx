@@ -1,7 +1,5 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 import { Product } from "../../components/product";
-import React, { useState } from 'react';
-
 
 interface CounterState {
     count: number,
@@ -27,18 +25,19 @@ const  counterSlice = createSlice (
 
                 state.products.products.filter((product:Product) => {
 
-                    if ((product.id - 1) == action.payload) {
+                    if ((product.id - 1) === action.payload) {
                         product.quantity +=1;
 
                         // check if the element is already in the cart and if so increment the total price 
                         const index = state.elementsInCart.findIndex(element => element.id === product.id);
 
-                        if(typeof state.elementsInCart[index] !== 'undefined' && state.elementsInCart[index].id == product.id) {
+                        if(typeof state.elementsInCart[index] !== 'undefined' && state.elementsInCart[index].id === product.id) {
                             state.total += product.price
                         }
                     }
             
-                   
+                   return true
+
                 });
 
             }, 
@@ -47,18 +46,20 @@ const  counterSlice = createSlice (
                 state.products.products.filter((product:Product) => {
 
                     if(state.products.products[action.payload].quantity >= 2) {
-                    if ((product.id - 1) == action.payload) {
+                    if ((product.id - 1) === action.payload) {
                         product.quantity -=1;
 
 
                         // check if the element is already in the cart and if so increment the total price 
                         const index = state.elementsInCart.findIndex(element => element.id === product.id);
 
-                        if(typeof state.elementsInCart[index] !== 'undefined' && state.elementsInCart[index].id == product.id) {
+                        if(typeof state.elementsInCart[index] !== 'undefined' && state.elementsInCart[index].id === product.id) {
                             state.total -= product.price
                         }
                     }
                 }
+
+                return true
             
                 });
 
@@ -66,7 +67,8 @@ const  counterSlice = createSlice (
 
             addElement : (state, action) => {
 
-                if(typeof current(state.elementsInCart).find(element => element.id == action.payload) == 'undefined') { 
+                //to be checked
+                if(typeof current(state.elementsInCart).find(element => element.id !== action.payload) == 'undefined') { 
 
                     state.elementsInCart = [...state.elementsInCart, state.products.products[action.payload-1] ];
                     state.count +=1;
@@ -76,7 +78,7 @@ const  counterSlice = createSlice (
 
                     current(state.elementsInCart).filter((item) => {
 
-                        if (item.id == state.products.products[action.payload-1].id) {
+                        if (item.id === state.products.products[action.payload-1].id) {
 
                             if (item.quantity !== state.products.products[action.payload-1].quantity) {
 
@@ -95,6 +97,7 @@ const  counterSlice = createSlice (
                             }
                             
                         }
+                        return true
                     }
 
                 );

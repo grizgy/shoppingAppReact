@@ -1,5 +1,5 @@
 // import './checkout.css';
-import {Box, Card, Typography, FormControl, CardActions, Button, FormLabel, TextField, CardContent, Stack} from "@mui/material" 
+import {Box, Card, Typography, FormControl, CardActions, Button, TextField, Stack} from "@mui/material" 
 import { Link } from 'react-router-dom';
 
 function Checkout () {
