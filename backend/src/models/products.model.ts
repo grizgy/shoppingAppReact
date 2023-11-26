@@ -14,7 +14,7 @@ import { Model, DataTypes, Sequelize } from "sequelize";
 //     'men`s clothing','women`s clothing', 'jewelery', 'electronics'
 // }
 
-const PRODUCTS_TABLE = 'products';
+const PRODUCTS_TABLE = "Products";
 
 class Product extends Model {
 
@@ -23,7 +23,7 @@ class Product extends Model {
                 sequelize,
                 tableName: PRODUCTS_TABLE,
                 modelName: 'Products',
-                timestamps: true
+                timestamps: false
             }
         }
 }
@@ -55,6 +55,7 @@ const ProductsSchema = {
     category: {
         allowNull:false,
         type: DataTypes.ENUM,
+        values: ['men`s clothing','women`s clothing', 'jewelery', 'electronics'],
         field: "category"
     }, 
     image: {

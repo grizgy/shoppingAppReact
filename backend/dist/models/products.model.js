@@ -14,14 +14,14 @@ const sequelize_1 = require("sequelize");
 // export enum Category {
 //     'men`s clothing','women`s clothing', 'jewelery', 'electronics'
 // }
-const PRODUCTS_TABLE = 'products';
+const PRODUCTS_TABLE = "Products";
 class Product extends sequelize_1.Model {
     static config(sequelize) {
         return {
             sequelize,
             tableName: PRODUCTS_TABLE,
             modelName: 'Products',
-            timestamps: true
+            timestamps: false
         };
     }
 }
@@ -52,6 +52,7 @@ const ProductsSchema = {
     category: {
         allowNull: false,
         type: sequelize_1.DataTypes.ENUM,
+        values: ['men`s clothing', 'women`s clothing', 'jewelery', 'electronics'],
         field: "category"
     },
     image: {

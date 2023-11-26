@@ -1,6 +1,7 @@
 import  express, { Express, Request, Response, Router} from "express";
 import  dotenv from "dotenv";
 import  cors from "cors";
+import connection from "./config/database";
 import productsRouterApi from "./routes";
 
 dotenv.config();
@@ -14,14 +15,10 @@ const productRouter : Router = express.Router();
 
 app.get('/', (req : Request, res : Response) => {
   res.send('Home');
-  console.log(`AAAAAAAAAAAAAAA`);
+  console.log(`Home`);
 });
 
-// app.get('/:id', (req : Request, res : Response) => {
-//   res.send(`It is working ${req.params.id}`)
-// }
-// )
-
+connection()
 productsRouterApi(app)
 
 app.listen(port, () => {
