@@ -5,13 +5,40 @@ import { addElement } from '../features/counter/counterSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '@mui/material';
 
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Product } from './product';  
+
 
 function SelectedItem  () {
 
   const {id} = useParams();
-  const dispatch = useDispatch();
   const productID = Number(id);
-  const product = useSelector((state : any )=> state.counter.products);
+
+  const emptyProduct : Product = {
+    id: 0,
+    title:'',
+    price:0,
+    description: '',
+    category:'',
+    image:'',
+    rating:[],
+    size:'',
+    color:'',
+    quantity:0
+  }
+
+  const [product, setProduct] = useState<Product>(emptyProduct);
+    
+  useEffect(() => {
+    axios
+      .get<Product>(`http://localhost:8080/product/${productID}`)
+      .then((res) => setProduct(res.data));
+  },[]);
+
+  
+  const dispatch = useDispatch();
+  // const product = useSelector((state : any )=> state.counter.products);
 
     return (
 
@@ -19,12 +46,12 @@ function SelectedItem  () {
 
       <div className="preview">
       <div className="sample-wrapper">
-        <img src={product.products[productID-1].image} alt='preview' id="preview-image" className="sample-frame"></img>
+        <img src={product.image} alt='preview' id="preview-image" className="sample-frame"></img>
       </div>
       <div className="sample-info label-like">
         <label>
-          <strong>{product.products[productID-1].title}</strong><br></br>
-          <i>{product.products[productID-1].description}</i>
+          <strong>{product.title}</strong><br></br>
+          <i>{product.description}</i>
           </label>
       </div>
     </div>
@@ -38,11 +65,11 @@ function SelectedItem  () {
           <legend>Summary and Submit</legend>
             <div className="form-text-row">
               <label>Price (excl. shipping)</label>
-              <label className="sum">€{product.products[productID-1].price.toFixed(2)}</label>
+              <label className="sum">€{product.price}</label>
             </div>
             <div className="form-text-row">
                           <QuantitySection id = {productID-1} ></QuantitySection>
-                          <label>Total Price:€{(product.products[productID-1].quantity*product.products[productID-1].price).toFixed(2)}</label> 
+                          <label>Total Price:€{(product.quantity*product.price).toFixed(2)}</label> 
             </div>
             <Button  variant="contained" color='primary' className="dropbtn" id="config-submit-button" onClick={() => dispatch(addElement(id))}>Add to Cart</Button>
 

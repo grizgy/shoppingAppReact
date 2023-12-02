@@ -13,11 +13,6 @@ const app = (0, express_1.default)();
 const port = 8080;
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
-const productRouter = express_1.default.Router();
-app.get('/', (req, res) => {
-    res.send('Home');
-    console.log(`Home`);
-});
 (0, database_1.default)();
 (0, routes_1.default)(app);
 app.listen(port, () => {

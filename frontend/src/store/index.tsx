@@ -1,9 +1,6 @@
 import {configureStore} from "@reduxjs/toolkit";
 import counterReducer from '../features/counter/counterSlice';
 
-// const reducerFn = (state = {counter : 0}, action) => {
-
-// }
 
 const store = configureStore (
     {
@@ -15,3 +12,6 @@ const store = configureStore (
 )
 
 export default store;
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch

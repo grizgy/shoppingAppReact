@@ -8,8 +8,8 @@ const productRouter = express_1.default.Router();
 const product_controller_1 = __importDefault(require("../controllers/product.controller"));
 productRouter
     .get('/', product_controller_1.default.get)
-    .get('/:id', product_controller_1.default.getById)
-    .post('/', product_controller_1.default.create)
-    .put('/:id', product_controller_1.default.update)
-    .delete('/:id', product_controller_1.default._delete);
+    .get('/product/:id', product_controller_1.default.getById)
+    .post('/product', product_controller_1.default.create)
+    .put('/product/:id', product_controller_1.default.update)
+    .delete('/product/:id', product_controller_1.default._delete);
 exports.default = productRouter;

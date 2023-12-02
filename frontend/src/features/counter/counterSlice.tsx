@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice, current, PayloadAction  } from "@reduxjs/toolkit";
 import { Product } from "../../components/product";
 
 interface CounterState {
@@ -11,17 +11,19 @@ interface CounterState {
 const initialState : CounterState = {
     count: 0, 
     products: require ("../../db.json"),
+    // products : [],
     elementsInCart : [],
     total : 0
 }
 
-const  counterSlice = createSlice (
+
+const counterSlice = createSlice (
 
     {
         name : 'counter',
         initialState,
         reducers : {
-            increment : (state, action) => {
+            increment : (state, action : PayloadAction<number>) => {
 
                 state.products.products.filter((product:Product) => {
 
@@ -41,7 +43,7 @@ const  counterSlice = createSlice (
                 });
 
             }, 
-            decrement : (state, action) => {
+            decrement : (state, action : PayloadAction<number>) => {
 
                 state.products.products.filter((product:Product) => {
 
@@ -65,7 +67,7 @@ const  counterSlice = createSlice (
 
             }, 
 
-            addElement : (state, action) => {
+            addElement : (state, action : PayloadAction<any>) => {
 
                 //to be checked
                 if(typeof current(state.elementsInCart).find(element => element.id == action.payload) == 'undefined') { 
@@ -106,7 +108,7 @@ const  counterSlice = createSlice (
 
 
             }, 
-             removeElement (state, action) {
+             removeElement (state, action : PayloadAction<number>) {
 
                 const index = state.elementsInCart.findIndex(element => element.id === action.payload);
                 state.elementsInCart.splice(index, 1);

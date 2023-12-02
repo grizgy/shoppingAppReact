@@ -11,13 +11,6 @@ const port = 8080;
 app.use(cors());
 app.use(express.json());
 
-const productRouter : Router = express.Router();
-
-app.get('/', (req : Request, res : Response) => {
-  res.send('Home');
-  console.log(`Home`);
-});
-
 connection()
 productsRouterApi(app)
 

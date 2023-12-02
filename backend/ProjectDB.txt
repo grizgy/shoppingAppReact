@@ -3,7 +3,7 @@ CREATE TYPE category AS ENUM ('men`s clothing','women`s clothing', 'jewelery', '
 
 CREATE TABLE "Products" ("ProductID" integer NOT NULL, 
 						 "title" TEXT , 
-						 "price" NUMERIC(6, 2), 
+						 "price" double precision, 
 						 "description" TEXT, 
 						 "category" category, 
 						 "image" TEXT, 
