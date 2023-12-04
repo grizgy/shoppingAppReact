@@ -4,45 +4,29 @@ import { useParams } from 'react-router-dom';
 import { addElement } from '../features/counter/counterSlice'; 
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '@mui/material';
-
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Product } from './product';  
-
+import { useEffect } from 'react';
+import { useAppSelector, useAppDispatch } from '../features/counter/hooks';
+import { fetchProducts } from '../features/counter/productsSlice';
 
 function SelectedItem  () {
 
   const {id} = useParams();
   const productID = Number(id);
 
-  const emptyProduct : Product = {
-    id: 0,
-    title:'',
-    price:0,
-    description: '',
-    category:'',
-    image:'',
-    rating:[],
-    size:'',
-    color:'',
-    quantity:0
-  }
-
-  const [product, setProduct] = useState<Product>(emptyProduct);
-    
-  useEffect(() => {
-    axios
-      .get<Product>(`http://localhost:8080/product/${productID}`)
-      .then((res) => setProduct(res.data));
+  const dispatch = useAppDispatch();
+  const productState = useAppSelector((state) => {return state.products});
+  const product = productState.products[productID-1];
+  useEffect( () => {
+      dispatch(fetchProducts())
   },[]);
 
-  
-  const dispatch = useDispatch();
-  // const product = useSelector((state : any )=> state.counter.products);
+  console.log(productState.isloading)
 
     return (
 
-      <section className="configurator">
+      <div>
+
+      {!productState.isloading &&  <section className="configurator">
 
       <div className="preview">
       <div className="sample-wrapper">
@@ -77,7 +61,8 @@ function SelectedItem  () {
   
     </div>
     
-  </section>
+  </section>}
+    </div>
   
   );
 

@@ -1,5 +1,6 @@
-import { createSlice, current, PayloadAction  } from "@reduxjs/toolkit";
+import { createSlice, current, PayloadAction, createAsyncThunk  } from "@reduxjs/toolkit";
 import { Product } from "../../components/product";
+import axios from 'axios';
 
 interface CounterState {
     count: number,
@@ -15,6 +16,14 @@ const initialState : CounterState = {
     elementsInCart : [],
     total : 0
 }
+
+export const fetchProducts = createAsyncThunk ('counter/fetchProducts', async () => {
+    
+    return axios
+    .get(`http://localhost:8080`)
+    .then( (response) => response.data)
+
+})
 
 
 const counterSlice = createSlice (
@@ -113,8 +122,10 @@ const counterSlice = createSlice (
                 const index = state.elementsInCart.findIndex(element => element.id === action.payload);
                 state.elementsInCart.splice(index, 1);
                 state.count-=1 ;
-                state.total -= (state.products.products[action.payload-1].quantity * state.products.products[action.payload-1].price)
-                
+                const removedElement = state.products.products[action.payload-1];
+                state.total -= (removedElement.quantity * removedElement.price)
+                removedElement.quantity = 1;
+
             }
         }
     }
