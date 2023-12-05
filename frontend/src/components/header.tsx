@@ -13,7 +13,7 @@ function Header  ()  {
         
         <header className="main-header">
         <div className="header-left">
-        < Link to="/">
+        < Link to="/products">
         <img className="logo" src="https://t4.ftcdn.net/jpg/03/34/53/51/360_F_334535136_vvbWaKEpsHIMS4dpJUxgXZL6clQX7VGs.jpg" alt="Visit main search page" ></img>
         </Link>
         </div>
