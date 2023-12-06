@@ -2,7 +2,7 @@ import  express, { Express, Request, Response, Router} from "express";
 import  dotenv from "dotenv";
 import  cors from "cors";
 import connection from "./config/database";
-import productsRouterApi from "./routes";
+import {productsRouterApi, usersRouterApi} from "./routes";
 
 dotenv.config();
 const app : Express = express();
@@ -13,6 +13,7 @@ app.use(express.json());
 
 connection()
 productsRouterApi(app)
+usersRouterApi(app)
 
 app.listen(port, () => {
   console.log(`Server is Fire at http://localhost:${port}`);

@@ -1,20 +1,20 @@
-import {Product} from "../models/products.model"
-import {Optional} from "sequelize";
+import { User } from "../models/user.models";
+import { Optional } from "sequelize";
 
-class ProductsService {
+class UsersService {
 
     async find () {
-        const res = await Product.findAll();
+        const res = await User.findAll();
         return res;
     }
 
     async findOne (id: string) {
-        const res = await Product.findByPk(id);
+        const res = await User.findByPk(id);
         return res;
     }
 
     async create (data : Optional<any, string> ) {
-        const res = await Product.create(data);
+        const res = await User.create(data);
         return res;
     }
 
@@ -31,4 +31,4 @@ class ProductsService {
 
 }
 
-export default ProductsService;
+export default UsersService;

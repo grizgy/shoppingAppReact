@@ -7,14 +7,15 @@ const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const cors_1 = __importDefault(require("cors"));
 const database_1 = __importDefault(require("./config/database"));
-const routes_1 = __importDefault(require("./routes"));
+const routes_1 = require("./routes");
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = 8080;
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 (0, database_1.default)();
-(0, routes_1.default)(app);
+(0, routes_1.productsRouterApi)(app);
+(0, routes_1.usersRouterApi)(app);
 app.listen(port, () => {
     console.log(`Server is Fire at http://localhost:${port}`);
 });

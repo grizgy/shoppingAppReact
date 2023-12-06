@@ -41,7 +41,7 @@ const ProductsSchema = {
     },
     price: {
         allowNull: false,
-        type: sequelize_1.DataTypes.STRING,
+        type: sequelize_1.DataTypes.DOUBLE,
         field: "price"
     },
     description: {

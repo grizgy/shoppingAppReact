@@ -44,7 +44,7 @@ const ProductsSchema = {
     },  
     price: {
         allowNull:false,
-        type: DataTypes.STRING,
+        type: DataTypes.DOUBLE,
         field: "price"
     }, 
     description: {
