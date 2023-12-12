@@ -32,6 +32,37 @@ const getById = async (req : Request, res : Response) => {
     }
 }
 
+
+
+
+const authenticateUser = async (req : Request, res : Response) => {
+    try {
+        // const { id } = req.params;
+        // console.log(id)
+
+        const email = req.body.email
+        const password = req.body.password
+
+        // console.log(email)
+        // console.log(password)
+        
+        const response = await service.authenticateOne(email, password);
+
+        if (response === null) {
+            console.log('Not found!');
+          } else {
+            res.send(response.dataValues.email + " ," + response.dataValues.password + ", " + response.dataValues.phone);
+          }
+
+
+        
+    } catch (error : any) {
+        res.status(500).send({ success: false, message: error.message });
+    }
+}
+
+
+
 const update = async (req : Request, res : Response) => {
     try {
         const { id } = req.params;
@@ -53,4 +84,4 @@ const _delete = async (req : Request, res : Response) => {
     }
 }
 
-export default {create, get, getById, update, _delete};
+export default {create, get, getById, authenticateUser, update, _delete};

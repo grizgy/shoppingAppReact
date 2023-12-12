@@ -8,8 +8,16 @@ class UsersService {
         return res;
     }
 
-    async findOne (id: string) {
-        const res = await User.findByPk(id);
+    async findOne (id: any) {
+        const res = await User.findByPk(id)
+        return res;
+    }
+
+    async authenticateOne (email: any, password : any) {
+
+        const res = await User.findOne(    
+            { where: {email : email, password : password} }
+            );
         return res;
     }
 

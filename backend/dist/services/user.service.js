@@ -23,6 +23,12 @@ class UsersService {
             return res;
         });
     }
+    authenticateOne(email, password) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const res = yield user_models_1.User.findOne({ where: { email: email, password: password } });
+            return res;
+        });
+    }
     create(data) {
         return __awaiter(this, void 0, void 0, function* () {
             const res = yield user_models_1.User.create(data);

@@ -42,6 +42,26 @@ const getById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.status(500).send({ success: false, message: error.message });
     }
 });
+const authenticateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        // const { id } = req.params;
+        // console.log(id)
+        const email = req.body.email;
+        const password = req.body.password;
+        // console.log(email)
+        // console.log(password)
+        const response = yield service.authenticateOne(email, password);
+        if (response === null) {
+            console.log('Not found!');
+        }
+        else {
+            res.send(response.dataValues.email + " ," + response.dataValues.password + ", " + response.dataValues.phone);
+        }
+    }
+    catch (error) {
+        res.status(500).send({ success: false, message: error.message });
+    }
+});
 const update = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id } = req.params;
@@ -63,4 +83,4 @@ const _delete = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.status(500).send({ success: false, message: error.message });
     }
 });
-exports.default = { create, get, getById, update, _delete };
+exports.default = { create, get, getById, authenticateUser, update, _delete };

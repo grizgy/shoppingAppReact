@@ -16,11 +16,7 @@ const sequelize_1 = require("sequelize");
 const configs_1 = __importDefault(require("./configs"));
 const models_1 = __importDefault(require("../models"));
 const connection = () => __awaiter(void 0, void 0, void 0, function* () {
-    const sequelize = new sequelize_1.Sequelize(
-    // config.dbName,
-    // config.dbUser,
-    // config.dbPassword, 
-    "postgres", "postgres", "root", {
+    const sequelize = new sequelize_1.Sequelize(configs_1.default.dbName, configs_1.default.dbUser, configs_1.default.dbPassword, {
         host: configs_1.default.dbHost,
         dialect: 'postgres'
     });
