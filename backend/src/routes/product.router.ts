@@ -4,7 +4,7 @@ import productController from '../controllers/product.controller';
 
 
 productRouter
-        .get('/', productController.get)
+        .get('/products', productController.get)
         .get('/product/:id', productController.getById)
         .post('/product', productController.create)
         .put('/product/:id', productController.update)

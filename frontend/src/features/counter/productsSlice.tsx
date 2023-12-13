@@ -16,7 +16,7 @@ const initialState : ProductState = {
 export const fetchProducts = createAsyncThunk ('products/fetchProducts', async () => {
     
     return axios
-    .get(`http://localhost:8080`)
+    .get(`http://localhost:8080/products`)
     .then( (response) => response.data)
 
 })
@@ -34,10 +34,6 @@ const productsSlice = createSlice ({
                 state.isloading = false;
                 state.products = action.payload
                 console.log("fulfilled")
-
-                
-
-
             })
             builder.addCase(fetchProducts.rejected, (state) => {
                 state.isloading = false;

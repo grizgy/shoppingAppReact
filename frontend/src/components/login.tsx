@@ -1,47 +1,82 @@
-import {Box, Card, Typography, CardActions, Button, TextField, Stack} from "@mui/material" 
+import {Box, Card, Typography, CardActions, Button, TextField, Stack, Input } from "@mui/material" 
 import { Link} from "react-router-dom";
+import { useState } from "react";
+import axios, { AxiosError } from "axios";
+import { useSignIn } from "react-auth-kit";
 
 function Login ()  {
 
-   
+    const signIn = useSignIn();
+    const [formData, setFormData] = useState({email: '', password: ''})
+    const [errorMessage, setErrorMessage] =useState('')
+
+    const onSubmit = async (e : any) => {
+        e.preventDefault()
+    
+        try {
+        const response = await axios.post(
+          'http://localhost:8080/auth', 
+          formData)
+    
+    
+          signIn({
+                token: response.data.token,
+                expiresIn: 10,
+                tokenType: "Bearer",
+                authState: {email:formData.email}
+            })
+    
+            console.log(formData)
+        } catch (error) {
+    
+          if(error && error instanceof AxiosError) {
+            setErrorMessage(error.response?.data.message)
+          } else if (error && error instanceof Error) {
+            setErrorMessage(error.message)
+          }
+    
+          console.log("Error: ", error )
+    
+        }
+    
+    }
 
     return (
       
-<Box display="flex"
-justifyContent="center"
-alignItems="center"
-minHeight="80vh">
-    <Card>
 
-        <Typography>SIGN IN</Typography>
 
-        <Stack direction='column'alignItems={'center'}>
+
+        // <Typography>SIGN IN</Typography>
+
+<form onSubmit={onSubmit}>
+     
            
-            <CardActions>
-            <Stack direction='column'>
+ 
+            
                 {/* <FormLabel>Account email</FormLabel> */}
-                <TextField label="Account email" required type={'email'} variant="standard"></TextField>
-            </Stack>
-            </CardActions>
+                <input   required type={'email'} onChange={(e)=>setFormData({...formData, email: e.target.value})}></input >
+          
+
         
 
     
-            <CardActions>
-            <Stack direction='column'>
+    
+    
                 {/* <FormLabel>Password</FormLabel> */}
-                <TextField label="Password" required type={'password'} variant="standard"></TextField>
-            </Stack>    
-            </CardActions>
+                <input   required type={'password'}  onChange={(e)=>setFormData({...formData, password: e.target.value})}></input >
+       
+       
 
     
-            <CardActions>
-            <Button variant='contained' size='large'>Login</Button>
-            <div>Don't have an account?<Link to={`/register`} className="search-item"><Button size='small'>Sign Up</Button></Link></div>
-            </CardActions>
          
-        </Stack>
-    </Card>
-</Box>
+            <button >Login</button>
+            <div>Don't have an account?<Link to={`/register`} className="search-item"><button>Sign Up</button></Link></div>
+          
+         
+       
+</form>
+  
+
     
 
                 /* <form [formGroup]="loginForm" fxLayoutAlign="stretch" fxLayout="column" class="login-form">
