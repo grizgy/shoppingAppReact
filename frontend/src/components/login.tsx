@@ -21,7 +21,7 @@ function Login ()  {
     
           signIn({
                 token: response.data.token,
-                expiresIn: 10,
+                expiresIn: 60,
                 tokenType: "Bearer",
                 authState: {email:formData.email}
             })

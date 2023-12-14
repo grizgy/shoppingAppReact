@@ -10,7 +10,7 @@ userRouter
     .get('/users', user_controller_1.default.get)
     .get('/user/:id', user_controller_1.default.getById)
     .post('/auth/', user_controller_1.default.authenticateUser)
-    .post('/register', user_controller_1.default.create)
+    .post('/register/', user_controller_1.default.create)
     .put('/user/:id', user_controller_1.default.update)
     .delete('/user/:id', user_controller_1.default._delete);
 exports.default = userRouter;

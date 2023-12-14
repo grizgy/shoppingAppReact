@@ -37,14 +37,9 @@ const getById = async (req : Request, res : Response) => {
 
 const authenticateUser = async (req : Request, res : Response) => {
     try {
-        // const { id } = req.params;
-        // console.log(id)
 
         const email = req.body.email
         const password = req.body.password
-
-        // console.log(email)
-        // console.log(password)
         
         const response = await service.authenticateOne(email, password);
 

@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Badge from '@mui/material/Badge';
 import { useSignOut } from 'react-auth-kit';
+import { Button } from '@mui/material';
 
 function Header  ()  {
 
@@ -23,7 +24,7 @@ function Header  ()  {
         <DropDown/>
 
         <Link to={'/login'}>
-        <button onClick={signOut} >Sign out</button>
+        <Button variant="outlined" color='error'  onClick={signOut}>Sign out</Button>
         </Link>
         
 

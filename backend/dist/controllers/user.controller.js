@@ -44,12 +44,8 @@ const getById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 const authenticateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        // const { id } = req.params;
-        // console.log(id)
         const email = req.body.email;
         const password = req.body.password;
-        // console.log(email)
-        // console.log(password)
         const response = yield service.authenticateOne(email, password);
         if (response === null) {
             console.log('Not found!');
