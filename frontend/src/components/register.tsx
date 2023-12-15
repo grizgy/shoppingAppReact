@@ -1,4 +1,4 @@
-import {Box, Card, Typography, CardActions, Button, TextField, Stack} from "@mui/material" 
+import {Box, Card, Typography, CardActions, Button, TextField, Stack, Input, FormLabel, FormControl} from "@mui/material" 
 import { Link} from "react-router-dom";
 import { useState } from "react";
 import axios, { AxiosError } from "axios";
@@ -38,17 +38,38 @@ function Register ()  {
       
       
        
+            // <FormControl onSubmit={onSubmit}>
+
             <form onSubmit={onSubmit}>
 
+
+
+            <Box display="flex"
+            justifyContent="center"
+            alignItems="center"
+            minHeight="80vh">
+
+
+                <Card>
+
+                <Typography>Register</Typography>
+
+                    <Stack spacing={2} direction='column'alignItems={'center'}>
+
+                        <Stack spacing={2} direction='column'>
                                 {/* <FormLabel>Account email</FormLabel> */}
-                                <input   required type={'email'} onChange={(e)=>setFormData({...formData, email: e.target.value})}></input>
-                     
+                                <TextField label="Account email"  required type={'email'} onChange={(e)=>setFormData({...formData, email: e.target.value})}></TextField>
+                        </Stack> 
+
+                        <Stack spacing={2} direction='column'>
                                 {/* <FormLabel>Username</FormLabel> */}
-                                <input  required type={'text'}  onChange={(e)=>setFormData({...formData, username: e.target.value})}></input >
-                           
+                                <TextField label="Username" required type={'text'}  onChange={(e)=>setFormData({...formData, username: e.target.value})}></TextField >
+                        </Stack>    
+
+                        <Stack spacing={2} direction='column'>   
                                 {/* <FormLabel>Password</FormLabel> */}
-                                <input  required type={'password'}  onChange={(e)=>setFormData({...formData, password: e.target.value})}></input>
-                             
+                                <TextField label="Password" required type={'password'}  onChange={(e)=>setFormData({...formData, password: e.target.value})}></TextField>
+                        </Stack>  
                     
                             {/* <Stack spacing={2} direction='column'> */}
                                 {/* <FormLabel>Confirm password</FormLabel> */}
@@ -56,24 +77,35 @@ function Register ()  {
                             </Stack>     */}
                      
                           
+                        <Stack spacing={2} direction='column'>   
                                 {/* <FormLabel>First Name</FormLabel> */}
-                                <input required type={'text'} onChange={(e)=>setFormData({...formData, firstname: e.target.value})}></input>
-                         
+                                <TextField label="First Name" required type={'text'} onChange={(e)=>setFormData({...formData, firstname: e.target.value})}></TextField>
+                        </Stack>                         
+
+                        <Stack spacing={2} direction='column'>   
                                 {/* <FormLabel>Last Name</FormLabel> */}
-                                <input required type={'text'}  onChange={(e)=>setFormData({...formData, lastname: e.target.value})}></input>
-                           
+                                <TextField label="Last Name" required type={'text'}  onChange={(e)=>setFormData({...formData, lastname: e.target.value})}></TextField>
+                        </Stack>   
+
+                        <Stack spacing={2} direction='column'>          
                                 {/* <FormLabel>Phone number</FormLabel> */}
-                                <input required type={'text'}  onChange={(e)=>setFormData({...formData, phone: e.target.value})}></input>
-                         
-
-                                <button >Register</button>
-            <div>You have an account?<Link to={`/login`} className="search-item"><button>Log Up</button></Link></div>
+                                <TextField label="Phone number" required type={'text'}  onChange={(e)=>setFormData({...formData, phone: e.target.value})}></TextField>
+                         </Stack> 
 
 
-        
+                    <CardActions>                
+                                <Button >Register</Button>
+                                 <div>You have an account?<Link to={`/login`} className="search-item"><Button>Log Up</Button></Link></div>
+                    </CardActions>
+
+                </Stack>
+            </Card>
+
+        </Box>
+        </form>
 
 
-                </form>
+    // {/* </FormControl> */}
 
     
 
