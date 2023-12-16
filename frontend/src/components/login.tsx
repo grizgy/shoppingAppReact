@@ -1,8 +1,9 @@
-import {Box, Card, Typography, CardActions, Button, TextField, Stack, Input } from "@mui/material" 
+import {Box, Card, Typography, CardActions, Button, TextField, Stack, Input, Paper, FormControl } from "@mui/material" 
 import { Link} from "react-router-dom";
 import { useState } from "react";
 import axios, { AxiosError } from "axios";
 import { useSignIn } from "react-auth-kit";
+
 
 function Login ()  {
 
@@ -49,31 +50,42 @@ function Login ()  {
         // <Typography>SIGN IN</Typography>
 
 <form onSubmit={onSubmit}>
-     
-           
- 
-            
-                {/* <FormLabel>Account email</FormLabel> */}
-                <input   required type={'email'} onChange={(e)=>setFormData({...formData, email: e.target.value})}></input >
-          
 
-        
+<Box display="flex"
+justifyContent="center"
+alignItems="center"
+minHeight="80vh">
 
-    
-    
-    
-                {/* <FormLabel>Password</FormLabel> */}
-                <input   required type={'password'}  onChange={(e)=>setFormData({...formData, password: e.target.value})}></input >
-       
-       
+      <Card>
 
-    
-         
-            <button >Login</button>
-            <div>Don't have an account?<Link to={`/register`} className="search-item"><button>Sign Up</button></Link></div>
-          
-         
-       
+        <Typography>SIGN IN</Typography>
+
+        <Stack direction='column'alignItems={'center'}>
+
+            <CardActions>
+              <Stack direction='column'>
+                  {/* <FormLabel>Account email</FormLabel> */}
+                  <TextField label="Account email" required type={'email'} variant="standard" onChange={(e)=>setFormData({...formData, email: e.target.value})}></TextField >
+                  </Stack>
+            </CardActions>
+      
+            <CardActions>
+                  <Stack direction='column'>
+                  {/* <FormLabel>Password</FormLabel> */}
+                      <TextField label="Password" required type={'password'} variant="standard" onChange={(e)=>setFormData({...formData, password: e.target.value})}></TextField >
+                  </Stack>
+            </CardActions>
+      
+            <CardActions>
+              <Button type="submit" variant="contained">Login</Button>
+              <div>Don't have an account?<Link to={`/register`} className="search-item"><Button variant="contained" color="success">Sign Up</Button></Link></div>
+            </CardActions>
+
+
+            </Stack>
+    </Card>
+</Box>
+
 </form>
   
 

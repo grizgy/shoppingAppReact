@@ -58,44 +58,39 @@ function Register ()  {
 
                         <Stack spacing={2} direction='column'>
                                 {/* <FormLabel>Account email</FormLabel> */}
-                                <TextField label="Account email"  required type={'email'} onChange={(e)=>setFormData({...formData, email: e.target.value})}></TextField>
+                                <TextField label="Account email"  required type={'email'} variant="standard" onChange={(e)=>setFormData({...formData, email: e.target.value})}></TextField>
                         </Stack> 
 
                         <Stack spacing={2} direction='column'>
                                 {/* <FormLabel>Username</FormLabel> */}
-                                <TextField label="Username" required type={'text'}  onChange={(e)=>setFormData({...formData, username: e.target.value})}></TextField >
+                                <TextField label="Username" required type={'text'}  variant="standard" onChange={(e)=>setFormData({...formData, username: e.target.value})}></TextField >
                         </Stack>    
 
                         <Stack spacing={2} direction='column'>   
                                 {/* <FormLabel>Password</FormLabel> */}
-                                <TextField label="Password" required type={'password'}  onChange={(e)=>setFormData({...formData, password: e.target.value})}></TextField>
+                                <TextField label="Password" required type={'password'}  variant="standard" onChange={(e)=>setFormData({...formData, password: e.target.value})}></TextField>
                         </Stack>  
-                    
-                            {/* <Stack spacing={2} direction='column'> */}
-                                {/* <FormLabel>Confirm password</FormLabel> */}
-                                {/* <TextField label="Confirm password" required type={'password'} variant="standard" onChange={(e)=>setFormData({...formData, confirmedPassword: e.target.value})}></TextField>
-                            </Stack>     */}
                      
                           
                         <Stack spacing={2} direction='column'>   
                                 {/* <FormLabel>First Name</FormLabel> */}
-                                <TextField label="First Name" required type={'text'} onChange={(e)=>setFormData({...formData, firstname: e.target.value})}></TextField>
+                                <TextField label="First Name" required type={'text'} variant="standard" onChange={(e)=>setFormData({...formData, firstname: e.target.value})}></TextField>
                         </Stack>                         
 
                         <Stack spacing={2} direction='column'>   
                                 {/* <FormLabel>Last Name</FormLabel> */}
-                                <TextField label="Last Name" required type={'text'}  onChange={(e)=>setFormData({...formData, lastname: e.target.value})}></TextField>
+                                <TextField label="Last Name" required type={'text'} variant="standard" onChange={(e)=>setFormData({...formData, lastname: e.target.value})}></TextField>
                         </Stack>   
 
                         <Stack spacing={2} direction='column'>          
                                 {/* <FormLabel>Phone number</FormLabel> */}
-                                <TextField label="Phone number" required type={'text'}  onChange={(e)=>setFormData({...formData, phone: e.target.value})}></TextField>
+                                <TextField label="Phone number" required type={'text'}  variant="standard" onChange={(e)=>setFormData({...formData, phone: e.target.value})}></TextField>
                          </Stack> 
 
 
                     <CardActions>                
-                                <Button >Register</Button>
-                                 <div>You have an account?<Link to={`/login`} className="search-item"><Button>Log Up</Button></Link></div>
+                                <Button type="submit" variant="contained">Register</Button>
+                                 <div>You have an account?<Link to={`/login`} className="search-item"><Button variant="contained" color="success">Log in</Button></Link></div>
                     </CardActions>
 
                 </Stack>
