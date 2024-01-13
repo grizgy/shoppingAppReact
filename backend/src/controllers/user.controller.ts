@@ -46,7 +46,7 @@ const authenticateUser = async (req : Request, res : Response) => {
         if (response === null) {
             console.log('Not found!');
           } else {
-            res.send(response.dataValues.email + " ," + response.dataValues.password + ", " + response.dataValues.phone);
+            res.redirect('/products');            
           }
 
 

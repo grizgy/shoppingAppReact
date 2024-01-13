@@ -16,7 +16,7 @@ class User extends Model {
 
 
 const UsersSchema = {
-    id: {
+    UserID: {
         allowNull:false,
         autoIncrement: true,
         primaryKey: true,

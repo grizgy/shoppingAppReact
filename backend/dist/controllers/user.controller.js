@@ -51,7 +51,7 @@ const authenticateUser = (req, res) => __awaiter(void 0, void 0, void 0, functio
             console.log('Not found!');
         }
         else {
-            res.send(response.dataValues.email + " ," + response.dataValues.password + ", " + response.dataValues.phone);
+            res.redirect('/products');
         }
     }
     catch (error) {

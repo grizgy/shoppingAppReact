@@ -28,6 +28,7 @@ function Login ()  {
             })
     
             console.log(formData)
+            window.location.href = 'http://localhost:3000/products'
         } catch (error) {
     
           if(error && error instanceof AxiosError) {

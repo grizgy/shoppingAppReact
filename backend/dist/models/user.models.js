@@ -15,7 +15,7 @@ class User extends sequelize_1.Model {
 }
 exports.User = User;
 const UsersSchema = {
-    id: {
+    UserID: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
